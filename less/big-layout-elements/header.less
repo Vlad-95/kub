@@ -1,5 +1,5 @@
 .header {
-    padding: 24px 0 22px;
+    padding: 10px 0 0;
 
     &__wrap {
         display: flex;      
@@ -7,20 +7,14 @@
         position: relative;
     }
 
-    .logo {
-        // svg {
-        //     width: 130px;
-        //     height: 72px;
-        // }
-    }    
-
     .icons {
         margin-left: auto;
         display: flex;
         align-items: center;
+        margin-right: 20px;
 
         &__item {
-
+            margin-left: 10px;
         }
 
         svg {
@@ -30,18 +24,25 @@
 
     .call {
         display: flex;
+        align-items: center;
 
         &__items {
+            display: flex;
+            flex-direction: column;
+            margin-right: 10px;
+
             a {
                 font-size: 12px;
             }
         }
 
         &__img {
-            width: 60px;
-            min-width: 60px;
-            height: 60px;
+            width: 40px;
+            min-width: 40px;
+            height: 40px;
+            border: 2px solid @text;
             border-radius: 100px;
+            overflow: hidden;            
 
             img {
                 width: 100%;

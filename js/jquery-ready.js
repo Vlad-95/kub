@@ -1,61 +1,34 @@
 $(document).ready(function() {
-    //===========Мобильное меню
-    let body = $('body')
-    let windowWidth = window.innerWidth;
-    let header = $('.header');
-    let headerWrap = $('.header__wrap');
-    let time = header.find('.nav__item.time');
-    let mail = header.find('.nav__item.mail');
-    let address = header.find('.nav__item.address');
-    let phone = header.find('.nav__item.phone')
-    let burger = $('.burger');
-    let windowHeight = $(window).height();
+    // Одинаковая высота элементов на главной странице
+    if ($('.grid').length) {
+        let maxHeight = 0;
 
-    if (windowWidth <= 992) {
-        //создаем контейнер для менюшки
-        let mobileMenu = $(document.createElement('div'));
-        let nav = $(document.createElement('div'));
-        mobileMenu.addClass('mobile-menu');
-        nav.addClass('nav');
+        $('.grid__item').each(function() {
+            let gridItemHeight = $(this).height();
 
-        headerWrap.append(mobileMenu)
-        mobileMenu.append(nav)
+            if (gridItemHeight > maxHeight) {
+                maxHeight = gridItemHeight;
+                console.log(maxHeight)
+               
+            }
+        })
 
-        //клонируем элементы хедера
-        let mobileTime = time.clone();
-        let mobileMail = mail.clone();
-        let mobileAddress = address.clone();
-        let mobilePhone = phone.clone();
-        
-        nav.append(mobilePhone); 
-        nav.append(mobileMail);  
-        nav.append(mobileAddress);  
-        nav.append(mobileTime);   
-              
+        $('.grid__item').height(maxHeight);
     }
 
-    function showMenu() {
-        let mobileMenu = $('.mobile-menu');
 
-        burger.toggleClass('active');
-        body.toggleClass('no-scroll');
-        mobileMenu.toggleClass('active');
-        console.log(1)
+    //Открытие/Закрытие модалок
+    if ($('.modal').length) {
+        $('a[data-modal]').click(function () {
+            let linkTarget = $(this).attr('data-modal');
+
+            $('.modal[data-modal='+ linkTarget +']').fadeIn();
+            $('body').addClass('no-scroll');
+        })
+
+        $('.modal .close').click(function() {
+            $(this).closest('.modal').fadeOut();
+            $('body').removeClass('no-scroll');
+        })
     }
-
-    burger.click(showMenu);
-
-    //============Мобильное меню (КОНЕЦ)
-
-    //всплывашка
-    $('.layout__item .close').click(function() {
-        //подставляем текст
-        let text = $(this).closest('.layout__item').find('.name h2').text();
-        $('.popup').find('.text span').text(text);
-        $('.popup').fadeIn();
-    })
-
-    $('.popup .close, .popup .btn').click(function() {
-        $(this).closest('.popup').fadeOut();
-    });
 });

@@ -1,10 +1,25 @@
 .footer {
-    padding: 0 0 30px;   
+    padding: 20px 0;   
 
     &__wrap {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        position: relative;
     }
 
+    .social {
+        &__item {
+            svg {
+                fill: @text;
+            }
+        }
+    }
+
+    .link {
+        margin: 15px 0;
+    }
+
+    .company {
+        margin: 0;
+    }
 }
