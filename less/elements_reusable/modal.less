@@ -10,11 +10,14 @@
     overflow: auto;  
 
     &__wrap {
-        max-width: 576px;      
+        display: flex;
+        justify-content: center;
+        
         
     }
 
     &__content {
+        max-width: 576px;      
         background-color: @white;
         padding: 60px 20px 20px;
         position: relative;
@@ -26,6 +29,7 @@
             height: 25px;
             top: 20px;
             right: 20px;
+            cursor: pointer;
 
             span {
                 position: absolute;
